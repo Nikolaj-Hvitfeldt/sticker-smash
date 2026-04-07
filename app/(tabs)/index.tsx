@@ -23,10 +23,8 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   button: {
+    fontSize: 20,
     color: "#fff",
-    marginTop: 20,
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: "#007AFF",
+    textDecorationLine: "underline",
   },
 });
