@@ -16,7 +16,7 @@ import ImageViewer from "@/components/ImageViewer";
 import domtoimage from "dom-to-image";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const PlaceholderImage = require("@/assets/images/background-image.png");
+const PlaceholderImage = require("@/assets/images/background-image.png") as ImageSourcePropType;
 
 export default function Index() {
   const imageRef = useRef<View>(null);
