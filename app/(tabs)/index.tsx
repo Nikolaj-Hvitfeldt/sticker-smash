@@ -16,7 +16,8 @@ import ImageViewer from "@/components/ImageViewer";
 import domtoimage from "dom-to-image";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const PlaceholderImage = require("@/assets/images/background-image.png") as ImageSourcePropType;
+const PlaceholderImage =
+  require("@/assets/images/background-image.png") as ImageSourcePropType;
 
 export default function Index() {
   const imageRef = useRef<View>(null);
@@ -33,10 +34,10 @@ export default function Index() {
   >(undefined);
 
   useEffect(() => {
-    if (permissionResponse?.granted) {
+    if (!permissionResponse?.granted) {
       requestPermission();
     }
-  }, []);
+  }, [permissionResponse?.granted, requestPermission]);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
