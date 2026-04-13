@@ -11,7 +11,7 @@ export default function AboutScreen() {
       </Text>
 
       {employees.map((employee) => (
-        <Link key={employee.id} href={`/employees/${employee.id}`}>
+        <Link key={employee.id} href={`/employees/${employee.id}`} asChild>
           <Pressable style={styles.card}>
             <Text style={styles.name}>{employee.name}</Text>
             <Text style={styles.role}>{employee.role}</Text>

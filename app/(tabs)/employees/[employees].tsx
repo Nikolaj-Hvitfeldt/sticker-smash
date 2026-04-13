@@ -3,21 +3,21 @@ import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function EmployeesScreen() {
-  const { employee: id } = useLocalSearchParams<{ employee: string }>();
+  const { employees: id } = useLocalSearchParams<{ employees: string }>();
   const employee = employees.find((employee) => employee.id === id);
 
   if (!employee) {
     return (
       <View style={styles.container}>
-        <Text>Employee not found</Text>
+        <Text style={styles.errorText}>Employee not found</Text>
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Text>{employee.name}</Text>
-      <Text>{employee.role}</Text>
+      <Text style={styles.name}>{employee.name}</Text>
+      <Text style={styles.role}>{employee.role}</Text>
       <View>
         <InfoRow label="Department" value={employee.department} />
         <InfoRow label="Email" value={employee.email} />
@@ -30,9 +30,9 @@ export default function EmployeesScreen() {
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <View>
-      <Text>{label}</Text>
-      <Text>{value}</Text>
+    <View style={styles.row}>
+      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.value}>{value}</Text>
     </View>
   );
 }
@@ -42,5 +42,40 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#25292e",
     padding: 26,
+  },
+  name: {
+    color: "#fff",
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  role: {
+    color: "#ffd33d",
+    fontSize: 16,
+    marginBottom: 24,
+  },
+  card: {
+    backgroundColor: "#2e3540",
+    borderRadius: 12,
+    padding: 16,
+    gap: 14,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  label: {
+    color: "#aaa",
+    fontSize: 14,
+  },
+  value: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  errorText: {
+    color: "#fff",
+    fontSize: 16,
   },
 });
